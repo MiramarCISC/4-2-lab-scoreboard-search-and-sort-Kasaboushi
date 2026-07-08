@@ -7,6 +7,7 @@ using namespace std;
 
 bool isNullOrInvalid(const int scores[], int size) { //because we have to check this for multiple functions, let's just put it here.
     // returns true if size is invalid, or if the array is null
+
     if (scores == nullptr) {
         return true;
     }
@@ -55,6 +56,20 @@ double calculateAverage(const int scores[], int size) {
     // TODO:
     // If the array is null or the size is invalid, return 0.0.
     // Otherwise, return the total divided by size.
+    
+    if (isNullOrInvalid(scores,size)) {
+        return 0.0;
+    }
+    /*
+    double total = 0;
+    double count = 0;
+    for (int i = 0; i < size; i++) {
+        //cout << scores[i];
+        total += scores[i];
+        count ++;
+    }
+    */
+
     double total = calculateTotal(scores, size);
     return total / size;
 }
@@ -96,6 +111,9 @@ int findScore(const int scores[], int size, int target) {
     // Search the array from left to right.
     // Return the index where target is found.
     // Return -1 when target is not found.
+    if (isNullOrInvalid(scores, size)) {
+        return -1;
+    }
     for (int i = 0; i < size; i++) {
         if (scores[i] == target) {
             return i;
