@@ -48,7 +48,7 @@ int calculateTotal(const int scores[], int size) {
         total += scores[i];
     }
     return total;
-
+// test comment
 }
 
 double calculateAverage(const int scores[], int size) {
