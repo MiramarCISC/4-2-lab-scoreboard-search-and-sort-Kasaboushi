@@ -4,18 +4,17 @@
 using namespace std;
 
 int calculateTotal(const int scores[], int size) {
-    if(scores == nullptr || !isValidSize(size))
-    {
-        return 0;
-    }
     int total = 0;
-
-    for (int i = 0; i < size; i++)
+    if(!(scores == nullptr || !isValidSize(size)))
     {
-        total += scores[i];
+        for (int i = 0; i < size; i++)
+        {
+            total += scores[i];
+        }
     }
-
     return total;
+    // tqassar: I'm going to compress these two statements. It makes it a bit more complicated, but this way, there's only one return statement.
+    // also, variables are usually declared first if there's no reason to not. C++ reads top to bottom so this might cause problems if not done.
 }
 
 double calculateAverage(const int scores[], int size) {
@@ -23,17 +22,17 @@ double calculateAverage(const int scores[], int size) {
     {
         return 0;
     }
-    return static_cast<double>(calculateTotal(scores,size)) / size;
+    return static_cast<double>(calculateTotal(scores,size)) / size; // it's really a bit awkward to do it like this, but I guess it works.
 }
 
 int findLowest(const int scores[], int size) {
     if(scores == nullptr || !isValidSize(size))
     {
-        return 0;
+        return 0; // in the future, consider adding a function that does this.
     }
     int lowest = scores[0];
 
-    for(int i = 1; i < size; i++)
+    for(int i = 1; i < size; i++) //no need to move the bracket down a line.
     {
         if(scores[i] < lowest)
         {
@@ -73,7 +72,7 @@ int findScore(const int scores[], int size, int target) {
             return i;
         }
     }
-    return -1;
+    return -1; //instead of early returns, consider setting a variable to -1 and only updating it off the loop.
 }
 
 void sortScores(int scores[], int size) {
